@@ -19,6 +19,10 @@ jobs:
         python-version: "3.11" 
     - name: Install dependencies 
       run: pip install -r src/requirements.txt
+    - name: Check Linting # Hacemos linting, es decir una revision del codigo sin ejecucion para buscar problemas de estilo como imports no usados.
+      working-directory: src
+      run: ruff check .
     - name: Test with pytest
       working-directory: src
       run: pytest tests.py 
+      
